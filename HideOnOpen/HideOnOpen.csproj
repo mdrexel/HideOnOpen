@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net462</TargetFramework>
+    <LangVersion>11</LangVersion>
+    <Nullable>enable</Nullable>
+
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Rules.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
