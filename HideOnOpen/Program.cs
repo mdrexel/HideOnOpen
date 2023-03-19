@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -31,7 +32,7 @@ namespace HideOnOpen
             {
                 string raw = GetCommandLine();
 
-                Process self = Process.GetCurrentProcess();
+                using Process self = Process.GetCurrentProcess();
                 string ownDirectory = Path.GetDirectoryName(self.MainModule.FileName);
                 string ruleLocation = Path.Combine(ownDirectory, RuleFile);
 
@@ -50,8 +51,7 @@ namespace HideOnOpen
                     throw new InvalidOperationException($"Missing extension: {extension}");
                 }
 
-                Process process = Process.Start(applicationFullPath, raw);
-                process.Dispose();
+                using Process process = Process.Start(applicationFullPath, raw);
 
                 File.SetAttributes(file, File.GetAttributes(file) | FileAttributes.Hidden);
             }
